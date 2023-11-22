@@ -57,12 +57,12 @@ driver.get(url)
 driver.implicitly_wait(500)
 # Locate email and password fields
 # Locate the element by ID
-password_field = driver.find_element(By.ID, "password-label")
+password_field = driver.find_element(By.ID, "password")
 password_field = password_field.click()
-#password_field.send_keys("JermaineCheah123!")
-# email_field = driver.find_element(By.ID, "email")
-# email_field = email_field.click()
-# email_field.send_keys("johnson.goh@zuscoffee.com")
+password_field.send_keys("JermaineCheah123!")
+email_field = driver.find_element(By.ID, "email")
+email_field = email_field.click()
+email_field.send_keys("johnson.goh@zuscoffee.com")
 # password_field = driver.find_element(By.ID, "password").click()
 # password_field.send_keys("JermaineCheah123!")
 
@@ -94,6 +94,6 @@ password_field = password_field.click()
 #         f.write(requests.get(image_data).content)
 
 # # Close the driver
-# driver.quit()
+driver.quit()
 
-# print("Images downloaded successfully!")
+print("Successfully Login!!")
