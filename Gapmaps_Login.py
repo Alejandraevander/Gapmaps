@@ -9,7 +9,7 @@ import time
 import os
 
 web = "https://live.gapmaps.com/login"
-path = r"C:\Users\r14ale\Desktop\Gapmaps\\msedgedriver.exe"
+path = r"C:\Users\\User\\Desktop\\PYTHON_PROJECT\Gapmaps\\msedgedriver.exe"
 
 #https://stackoverflow.com/questions/76377363/how-can-i-disable-personalize-your-web-experience-ms-edge-prompt-for-selenium
 #Compulsory Code in Selenium 4.0
@@ -32,17 +32,34 @@ WebDriverWait(driver,10).until(EC.presence_of_element_located((By.ID,"password")
 password_field = driver.find_element(By.XPATH, "//input[@name='password']")
 password_field.click()
 time.sleep(5)
-password_field.send_keys(os.environ.get('PASSWORD'))
+password_field.send_keys("JermaineCheah123!")
 
 email_field = driver.find_element(By.XPATH, "//input[@id='email']")
 email_field.click()
 time.sleep(5)
-email_field.send_keys(os.environ.get('EMAIL'))
+email_field.send_keys("johnson.goh@zuscoffee.com")
 
 #Login Button
 button = driver.find_element(By.ID, "submit-login")
 button.click()
 time.sleep(30)
+Layers = driver.find_element(By.XPATH, '//button[@aria-label="Layers"]')
+Layers.click()
+B1_precints = driver.find_element(By.XPATH, "//*[text() = 'B1 Precincts']")
+B1_precints.click()
+time.sleep(5)
+Major_1 = driver.find_element(By.XPATH, '//input[@id="toggle--Major Retail Precincts - Malaysia"]')
+Major_1.click()
+time.sleep(5)
+Major_2 = driver.find_element(By.XPATH, '//input[@id="toggle--Major Retail Precincts - Malaysia_pins"]')
+Major_2.click()
+time.sleep(5)
+A1_precints = driver.find_element(By.XPATH, "//*[text() = 'A1 Population']")
+A1_precints.click()
+time.sleep(5)
+Mukim_2021 = driver.find_element(By.XPATH, '//input[@id="toggle--3. Mukim - 2021"]')
+Mukim_2021.click()
+time.sleep(5)
 #driver.maximize_window()
 #Close website
 driver.quit()
