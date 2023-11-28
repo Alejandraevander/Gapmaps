@@ -4,9 +4,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service as Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from . import Credentials
 import pandas as pd
 import time
+import os
 
 web = "https://live.gapmaps.com/login"
 path = r"C:\Users\r14ale\Desktop\Gapmaps\\msedgedriver.exe"
@@ -32,12 +32,12 @@ WebDriverWait(driver,10).until(EC.presence_of_element_located((By.ID,"password")
 password_field = driver.find_element(By.XPATH, "//input[@name='password']")
 password_field.click()
 time.sleep(5)
-password_field.send_keys(Credentials.PASSWORD)
+password_field.send_keys(os.environ.get('PASSWORD'))
 
 email_field = driver.find_element(By.XPATH, "//input[@id='email']")
 email_field.click()
 time.sleep(5)
-email_field.send_keys(Credentials.EMAIL)
+email_field.send_keys(os.environ.get('EMAIL'))
 
 #Login Button
 button = driver.find_element(By.ID, "submit-login")
