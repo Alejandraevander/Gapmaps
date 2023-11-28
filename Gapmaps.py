@@ -15,6 +15,7 @@ from urllib.parse import urljoin
 import os
 import requests
 import time
+
 # Create a user agent object
 #user_agent = UserAgent()
 
@@ -27,22 +28,17 @@ options = Options()
 # Set the user agent string
 options.add_argument(f"user-agent={user_agent}")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
+options.add_experimental_option('excludeSwitches', ['enable-logging'])
 options.add_experimental_option("useAutomationExtension", False)
 
 # Create the driver with the options
 driver = webdriver.Edge(options=options)
 
-# Get a random user agent string
-#random_user_agent = user_agent.random
-
 # Specify the URL and path to Chrome driver
 url = "https://live.gapmaps.com/login"
-
+#url = "https://live.gapmaps.com/cartographer"
 
 # Select a directory to save the images
-
-download_dir = "/path/to/download/directory"
-
 # Create a new Chrome driver instance
 #driver = webdriver.Chrome(chromedriver_path)
 #driver = webdriver.Edge(executable_path="./msedgedriver.exe")
@@ -52,17 +48,22 @@ driver = webdriver.Edge(service=service)
 
 # Navigate to the specified URL
 driver.get(url)
+wait = WebDriverWait(driver, 30)
+password_field = wait.until(EC.visibility_of_element_located((By.ID, "password")))
+password_field = driver.find_element(By.ID, "password").click().send_keys("JermaineCheah123!")
+print("OK1")
+time.sleep(120)
+password_field.send_keys("JermaineCheah123!")
+print("OK2")
 #driver.implicitly_wait(10)
+#driver.implicitly_wait(5000)
 
-driver.implicitly_wait(500)
 # Locate email and password fields
 # Locate the element by ID
-password_field = driver.find_element(By.ID, "password")
-password_field = password_field.click()
-password_field.send_keys("JermaineCheah123!")
-email_field = driver.find_element(By.ID, "email")
-email_field = email_field.click()
-email_field.send_keys("johnson.goh@zuscoffee.com")
+#selenium.click("xpath=(//input[@type='submit'])
+#email_field = driver.find_element(By.XPATH, "//input[@id='email']")
+#email_field = email_field.click()
+#email_field.send_keys("johnson.goh@zuscoffee.com")
 # password_field = driver.find_element(By.ID, "password").click()
 # password_field.send_keys("JermaineCheah123!")
 
@@ -96,4 +97,4 @@ email_field.send_keys("johnson.goh@zuscoffee.com")
 # # Close the driver
 driver.quit()
 
-print("Successfully Login!!")
+#print("Successfully Login!!")
