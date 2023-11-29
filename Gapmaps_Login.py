@@ -9,7 +9,7 @@ import time
 import os
 
 web = "https://live.gapmaps.com/login"
-path = r"C:\Users\\User\\Desktop\\PYTHON_PROJECT\Gapmaps\\msedgedriver.exe"
+path = r"C:\Users\r14ale\Desktop\Gapmaps\\msedgedriver.exe"
 
 #https://stackoverflow.com/questions/76377363/how-can-i-disable-personalize-your-web-experience-ms-edge-prompt-for-selenium
 #Compulsory Code in Selenium 4.0
@@ -43,9 +43,13 @@ email_field.send_keys("johnson.goh@zuscoffee.com")
 button = driver.find_element(By.ID, "submit-login")
 button.click()
 time.sleep(30)
-Layers = driver.find_element(By.XPATH, '//button[@aria-label="Layers"]')
+Content = driver.find_element(By.XPATH, "//div[@class='mdc-drawer__content']")
+Layers = Content.find_element(By.XPATH, '//button[@aria-label="Layers"]')
 Layers.click()
-B1_precints = driver.find_element(By.XPATH, "//*[text() = 'B1 Precincts']")
+time.sleep(10)
+Layers_Section = driver.find_element(By.XPATH, "//Section[@class='nested-drawer s1xqslih']")
+B1_precints = Layers_Section.find_element(By.XPATH, "//*[text() = 'B1 Precincts']") 
+#B1_precints = driver.find_element(By.LINK_TEXT, 'B1 Precincts')
 B1_precints.click()
 time.sleep(5)
 Major_1 = driver.find_element(By.XPATH, '//input[@id="toggle--Major Retail Precincts - Malaysia"]')
@@ -59,6 +63,12 @@ A1_precints.click()
 time.sleep(5)
 Mukim_2021 = driver.find_element(By.XPATH, '//input[@id="toggle--3. Mukim - 2021"]')
 Mukim_2021.click()
+time.sleep(5)
+Back_button = driver.find_element(By.XPATH, "//button[@dir='ltr' and @role='button']")
+Back_button.click()
+time.sleep(5)
+Search = driver.find_element(By.XPATH, "//input[@placeholder='Search Location']")
+Search.click()
 time.sleep(5)
 #driver.maximize_window()
 #Close website
