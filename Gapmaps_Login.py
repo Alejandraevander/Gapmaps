@@ -70,6 +70,24 @@ time.sleep(5)
 Search = driver.find_element(By.XPATH, "//input[@placeholder='Search Location']")
 Search.click()
 time.sleep(5)
+
+data_keywords = pd.read_csv(r"C:\Users\r14ale\Desktop\Gapmaps\NOF\NF\LCT.csv", encoding="ISO-8859-1", engine='python')
+read_keywords = data_keywords['formatted_address']
+
+for keyword in read_keywords:
+    Search.send_keys(" ")
+    time.sleep(5)
+    Search.send_keys(Keys.RETURN)
+    time.sleep(5)
+    Search.click()
+    time.sleep(5)
+    Search.send_keys(keyword)
+    time.sleep(5)
+    Listed = driver.find_element(By.XPATH,"//ul[@role='listbox']")
+    time.sleep(5)
+    Item = Listed.find_element(By.XPATH, "//li[@id='react-autowhatever-1--item-0' and @data-suggestion-index='0']")
+    time.sleep(5)
+    Item.click()
 #driver.maximize_window()
 #Close website
 driver.quit()
