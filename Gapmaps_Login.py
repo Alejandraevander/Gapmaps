@@ -88,6 +88,9 @@ for keyword in read_keywords:
     Item = Listed.find_element(By.XPATH, "//li[@id='react-autowhatever-1--item-0' and @data-suggestion-index='0']")
     time.sleep(5)
     Item.click()
+    time.sleep(5)
+    Map = driver.find_element(By.XPATH, "//div[@class='app-content mdc-drawer-app-content']")
+    
     #createMarker: (business) -> new google.maps.Marker position: business.centerPoint() map: map title: business.get('name') optimized: false
 #driver.maximize_window()
 #Close website
